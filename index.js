@@ -8,6 +8,21 @@ app.get('/', (req, res) => {
     res.send('GraphQL is amazing!');
 });
 
+class Friend {
+    constructor(id, { firstName, lastName, gender, language, email }) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.language = language;
+        this.email = email;
+    }
+}
+
+// In memory database
+
+const friendDatabase = {};
+
 const root = {
     friend: () => {
         return {
@@ -21,7 +36,15 @@ const root = {
                 { email: "another@me.com" }
             ]
         }
+    },
+
+    createFriend: ({ input }) => {
+        // use crypto to create an id with some random bytes and convert them to string 
+        let id = require('crypto').randomBytes(10).toString('hex');
+        friendDatabase[id] = input;
+        return new Friend(id, input);
     }
+
 };
 
 app.use('/graphql', graphqlHTTP({
