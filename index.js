@@ -16,7 +16,10 @@ const root = {
             "lastName": "Doe",
             "gender": "Female",
             "language": "English",
-            "email": "me@me.com"
+            "emails": [
+                { email: "me@me.com" },
+                { email: "another@me.com" }
+            ]
         }
     }
 };
