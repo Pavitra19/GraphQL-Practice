@@ -8,6 +8,7 @@ const schema = buildSchema(`
         firstName: String
         lastName: String
         gender: String
+        age: Int
         language: String
         email: String
     }
@@ -16,11 +17,14 @@ const schema = buildSchema(`
         getFriend(id: ID): Friend
     }
 
+    # If there is an input type, same fields must be present as the type 
+
     input FriendInput {
         id: ID
         firstName: String!
         lastName: String
         gender: String
+        age: Int
         language: String
         email: String
 
