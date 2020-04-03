@@ -11,11 +11,14 @@ const schema = buildSchema(`
         age: Int
         language: String
         email: String
+        contacts: [Contact]
     }
 
-    type Query {
-        getFriend(id: ID): Friend
+    type Contact {
+        firstName: String
+        lastName: String
     }
+
 
     enum Gender {
 
@@ -23,6 +26,10 @@ const schema = buildSchema(`
         MALE
         FEMALE
         OTHER
+    }
+
+    type Query {
+        getFriend(id: ID): Friend
     }
 
     # If there is an input type, same fields must be present as the type 
@@ -35,7 +42,13 @@ const schema = buildSchema(`
         age: Int
         language: String
         email: String
+        contacts: [ContactInput]
 
+    }
+
+    input ContactInput {
+        firstName: String
+        lastName: String
     }
 
     type Mutation {
