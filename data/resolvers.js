@@ -7,8 +7,14 @@ export const resolvers = {
     // create a function or resolver that will allow us to get a friend once we have created something in our database. 
 
     Query: {
-        getFriend: ({ id }) => {
-            return new Friend(id, friendDatabase[id]);
+        getOneFriend: (root, { id }) => {
+            return new Promise((resolve, object) => {
+                // return friend
+                Friends.findById(id, (err, friend) => {
+                    if (err) reject(err)
+                    else resolve(friend)
+                });
+            });
         },
         getAliens: () => {
             return Aliens.findAll();
