@@ -35,6 +35,7 @@ const typeDefs = `
 
     type Query {
         getFriend(id: ID): Friend
+        getAliens: [Alien]
     }
 
     # If there is an input type, same fields must be present as the type 

@@ -6,8 +6,10 @@ import casual from 'casual';
 // Mongo connection
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/friends', {
-    useMongoClient: true,
-    useFindAndModify: false
+    // useMongoClient: true,
+    useFindAndModify: false,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
 
 // create schema 
